@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  db:
+    image: mariadb:11
+    container_name: peluqueria-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: peluqueria
+      MYSQL_USER: peluqueria
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  backend:
+    build: ./peluarrabalback/back
+    container_name: peluqueria-back
+    restart: always
+    depends_on:
+      - db
+    environment:
+      - ConnectionStrings__DefaultConnection="server=db;port=3306;database=peluqueria;user=peluqueria;password=password"
+    ports:
+      - "5067:8080"
+  frontend:
+    build: ./peluarrabalfront
+    container_name: peluqueria-front
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "5173:80"
+volumes:
+  db_data:
+
