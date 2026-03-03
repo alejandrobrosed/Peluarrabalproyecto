@@ -1,4 +1,4 @@
-# Incializar proyecto Pelu Arrabal
+# Inicializar proyecto Pelu Arrabal
 
 ## Crear y construir imágenes
 
