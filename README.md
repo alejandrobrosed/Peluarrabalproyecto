@@ -12,3 +12,8 @@ docker compose build --no-cache
 docker compose up
 ```
 
+## Probar aplicación web
+
+```sh
+http://localhost:5173/
+```
