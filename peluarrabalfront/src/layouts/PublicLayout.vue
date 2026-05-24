@@ -29,33 +29,7 @@ const navLinks = [
           <router-link to="/" class="logo-link">
             <!-- Emblem -->
             <div class="logo-emblem">
-              <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Outer gold ring -->
-                <circle cx="21" cy="21" r="20" stroke="url(#logoGrad)" stroke-width="1.2"/>
-                <!-- Inner teal fill -->
-                <circle cx="21" cy="21" r="16" fill="rgba(107,146,146,0.10)"/>
-                <!-- Scissors: blade top -->
-                <path d="M21 21 L10 10" stroke="#6B9292" stroke-width="2.4" stroke-linecap="round"/>
-                <circle cx="8.5" cy="8.5" r="4" stroke="#6B9292" stroke-width="1.6" fill="rgba(107,146,146,0.18)"/>
-                <circle cx="8.5" cy="8.5" r="1.5" fill="#6B9292"/>
-                <!-- Scissors: blade bottom -->
-                <path d="M21 21 L10 32" stroke="#6B9292" stroke-width="2.4" stroke-linecap="round"/>
-                <circle cx="8.5" cy="33.5" r="4" stroke="#6B9292" stroke-width="1.6" fill="rgba(107,146,146,0.18)"/>
-                <circle cx="8.5" cy="33.5" r="1.5" fill="#6B9292"/>
-                <!-- Pivot dot -->
-                <circle cx="21" cy="21" r="2.2" fill="#6B9292"/>
-                <!-- Handle -->
-                <path d="M21 21 L33 21" stroke="#C8A96E" stroke-width="2" stroke-linecap="round"/>
-                <path d="M29.5 17.5 L33 21 L29.5 24.5" stroke="#C8A96E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                <!-- Gradient def -->
-                <defs>
-                  <linearGradient id="logoGrad" x1="0" y1="0" x2="42" y2="42" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stop-color="#C8A96E" stop-opacity="0.7"/>
-                    <stop offset="50%" stop-color="#6B9292" stop-opacity="0.6"/>
-                    <stop offset="100%" stop-color="#C8A96E" stop-opacity="0.7"/>
-                  </linearGradient>
-                </defs>
-              </svg>
+              <img src="/img/peluarrabal.png" alt="La Pelu del Arrabal" class="logo-img" />
             </div>
             <!-- Text -->
             <div class="logo-text">
@@ -254,6 +228,13 @@ const navLinks = [
 .logo-emblem {
   flex-shrink: 0;
   transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+.logo-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 50%;
 }
 
 .logo-link:hover .logo-emblem {

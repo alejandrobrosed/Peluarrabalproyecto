@@ -4,16 +4,12 @@ import { ref } from "vue";
 // Intersection animation
 const featuresVisible = ref(false);
 const reviewsVisible = ref(false);
-const servicesVisible = ref(false);
 
 function onFeaturesIntersect(isIntersecting: boolean) {
   if (isIntersecting) featuresVisible.value = true;
 }
 function onReviewsIntersect(isIntersecting: boolean) {
   if (isIntersecting) reviewsVisible.value = true;
-}
-function onServicesIntersect(isIntersecting: boolean) {
-  if (isIntersecting) servicesVisible.value = true;
 }
 
 const features = [
@@ -67,56 +63,6 @@ const features = [
   },
 ];
 
-const services = [
-  {
-    icon: "mdi-content-cut",
-    title: "Corte Caballero",
-    desc: "Corte masculino moderno o clásico adaptado a tu estilo.",
-    price: "Desde 18 €",
-    gradient: "linear-gradient(135deg, rgba(107,146,146,0.15) 0%, rgba(107,146,146,0.05) 100%)",
-    iconColor: "#6B9292",
-  },
-  {
-    icon: "mdi-content-cut",
-    title: "Corte Mujer",
-    desc: "Corte personalizado para mujer con acabados profesionales.",
-    price: "Desde 25 €",
-    gradient: "linear-gradient(135deg, rgba(200,123,158,0.12) 0%, rgba(200,123,158,0.04) 100%)",
-    iconColor: "#C87B9E",
-  },
-  {
-    icon: "mdi-face-man",
-    title: "Barba",
-    desc: "Perfilado y cuidado profesional de barba.",
-    price: "Desde 12 €",
-    gradient: "linear-gradient(135deg, rgba(139,158,200,0.12) 0%, rgba(139,158,200,0.04) 100%)",
-    iconColor: "#8B9EC8",
-  },
-  {
-    icon: "mdi-palette",
-    title: "Coloración",
-    desc: "Color, mechas y balayage con técnicas profesionales.",
-    price: "Desde 35 €",
-    gradient: "linear-gradient(135deg, rgba(200,169,110,0.12) 0%, rgba(200,169,110,0.04) 100%)",
-    iconColor: "#C8A96E",
-  },
-  {
-    icon: "mdi-water",
-    title: "Tratamientos",
-    desc: "Hidratación, keratina y reparación capilar intensiva.",
-    price: "Desde 30 €",
-    gradient: "linear-gradient(135deg, rgba(123,170,136,0.12) 0%, rgba(123,170,136,0.04) 100%)",
-    iconColor: "#7BAA88",
-  },
-  {
-    icon: "mdi-star-circle",
-    title: "Peinado",
-    desc: "Peinados para eventos, bodas y ocasiones especiales.",
-    price: "Desde 20 €",
-    gradient: "linear-gradient(135deg, rgba(200,169,110,0.12) 0%, rgba(200,169,110,0.04) 100%)",
-    iconColor: "#C8A96E",
-  },
-];
 
 const reviews = [
   {
@@ -265,51 +211,6 @@ const reviews = [
               </div>
               <h3 class="feature-title">{{ f.title }}</h3>
               <p class="feature-text">{{ f.desc }}</p>
-            </div>
-          </v-col>
-        </v-row>
-      </v-container>
-    </section>
-
-    <!-- ─── SERVICES ─── -->
-    <section
-      class="section section--alt"
-      v-intersect="onServicesIntersect"
-    >
-      <v-container class="section-container">
-        <div class="section-label">Lo que hacemos</div>
-        <h2 class="section-title">Nuestros Servicios</h2>
-
-        <v-row class="mt-10">
-          <v-col
-            v-for="(s, i) in services"
-            :key="s.title"
-            cols="12"
-            sm="6"
-            md="4"
-            class="d-flex"
-          >
-            <div
-              class="service-card"
-              :class="{ 'card-visible': servicesVisible }"
-              :style="{ transitionDelay: `${i * 80}ms`, background: s.gradient }"
-            >
-              <div class="service-icon-wrap">
-                <v-icon :icon="s.icon" size="36" :color="s.iconColor" />
-              </div>
-              <h3 class="service-title" :style="{ color: s.iconColor }">{{ s.title }}</h3>
-              <p class="service-text">{{ s.desc }}</p>
-              <div class="service-price">{{ s.price }}</div>
-              <v-btn
-                to="/reservar"
-                variant="tonal"
-                size="small"
-                rounded="lg"
-                class="mt-4"
-                :style="{ color: s.iconColor }"
-              >
-                Reservar
-              </v-btn>
             </div>
           </v-col>
         </v-row>
@@ -612,69 +513,6 @@ const reviews = [
   font-size: 0.87rem;
   color: var(--c-text-soft);
   line-height: 1.65;
-}
-
-/* ─── SERVICE CARDS ─── */
-.service-card {
-  border: 1px solid var(--c-border);
-  border-radius: 16px;
-  padding: 36px 26px;
-  text-align: center;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.55s ease, transform 0.55s ease, box-shadow 0.28s ease, border-color 0.28s ease;
-}
-
-.service-card.card-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.service-card:hover {
-  transform: translateY(-6px) !important;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.32);
-  border-color: rgba(242, 227, 188, 0.15) !important;
-}
-
-.service-icon-wrap {
-  width: 70px;
-  height: 70px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.04);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 18px;
-  transition: transform 0.25s ease;
-}
-
-.service-card:hover .service-icon-wrap {
-  transform: scale(1.1);
-}
-
-.service-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.service-text {
-  font-size: 0.87rem;
-  color: var(--c-text-soft);
-  line-height: 1.65;
-  margin-bottom: 14px;
-  flex: 1;
-}
-
-.service-price {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--c-gold);
-  letter-spacing: -0.01em;
 }
 
 /* ─── REVIEWS ─── */
